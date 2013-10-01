@@ -9,6 +9,8 @@ namespace PonovoSMS
         public static void Init() 
         {
             Config.Load();
+            Modem.Init();
+            Db.Init();
         }
     }
 }

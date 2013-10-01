@@ -6,5 +6,9 @@ namespace PonovoSMS
 {
     class Logger
     {
+        public static void Write(String Msg)
+        {
+
+        }
     }
 }

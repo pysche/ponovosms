@@ -150,6 +150,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "退出程序";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // PonovoSms
             // 
@@ -167,6 +168,7 @@
             this.Name = "PonovoSms";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "短信守护程序 v1.0 Build20131001";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PonovoSms_FormClosing);
             this.Load += new System.EventHandler(this.PonovoSms_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="Db.cs" />
     <Compile Include="IniReader.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Modem.cs" />
     <Compile Include="PonovoSms.cs">
       <SubType>Form</SubType>
     </Compile>
