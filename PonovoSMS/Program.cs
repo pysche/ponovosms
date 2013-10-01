@@ -14,7 +14,7 @@ namespace PonovoSMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new 短信守护程序());
+            Application.Run(new PonovoSms());
         }
     }
 }
