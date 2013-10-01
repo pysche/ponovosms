@@ -39,11 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="短信守护程序.cs">
+    <Compile Include="PonovoSms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="短信守护程序.Designer.cs">
-      <DependentUpon>短信守护程序.cs</DependentUpon>
+    <Compile Include="PonovoSms.Designer.cs">
+      <DependentUpon>PonovoSms.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,9 +52,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="短信守护程序.resx">
+    <EmbeddedResource Include="PonovoSms.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>短信守护程序.cs</DependentUpon>
+      <DependentUpon>PonovoSms.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

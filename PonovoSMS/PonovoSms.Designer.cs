@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsSent = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,27 +37,22 @@
             this.tsReceived = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsCom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(135, 184);
+            this.button1.Location = new System.Drawing.Point(384, 153);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "删除sim卡短信";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(326, 183);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "重置COM口";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -73,29 +65,13 @@
             this.tsReceived,
             this.toolStripStatusLabel3,
             this.tsCom});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 228);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 182);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(582, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.Stretch = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "当前状态:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 15);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(546, 114);
-            this.textBox1.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 135);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "消息日志";
             // 
             // toolStripStatusLabel1
             // 
@@ -139,16 +115,57 @@
             this.tsCom.Size = new System.Drawing.Size(11, 17);
             this.tsCom.Text = "0";
             // 
-            // 短信守护程序
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 15);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(546, 114);
+            this.textBox1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(558, 135);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "消息日志";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(278, 153);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "浏览待发短信";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(495, 153);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "退出程序";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // PonovoSms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 250);
+            this.ClientSize = new System.Drawing.Size(582, 204);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "短信守护程序";
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(590, 231);
+            this.MinimumSize = new System.Drawing.Size(590, 231);
+            this.Name = "PonovoSms";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "短信守护程序 v1.0 Build20131001";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -161,7 +178,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -172,6 +188,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tsReceived;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel tsCom;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }
 
