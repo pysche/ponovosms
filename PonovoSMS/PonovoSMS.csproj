@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="IniReader.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="PonovoSms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +64,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="PonovoSMS.ini" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

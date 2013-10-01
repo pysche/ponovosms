@@ -13,6 +13,12 @@ namespace PonovoSMS
         public PonovoSms()
         {
             InitializeComponent();
+            Core.Init();
+        }
+
+        private void PonovoSms_Load(object sender, EventArgs e)
+        {
+            tsCom.Text = Config.COM_PORT;
         }
     }
 }

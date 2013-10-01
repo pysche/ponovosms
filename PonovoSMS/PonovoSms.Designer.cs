@@ -167,6 +167,7 @@
             this.Name = "PonovoSms";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "短信守护程序 v1.0 Build20131001";
+            this.Load += new System.EventHandler(this.PonovoSms_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
