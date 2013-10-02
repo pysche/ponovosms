@@ -16,6 +16,11 @@ namespace PonovoSMS
             conn = new MySqlConnection(connStr);
       
             Connect();
+
+            if (connected == true)
+            {
+                Logger.Write("Connected to MySQL", "debug");
+            }
         }
 
         public static void Connect()
@@ -30,7 +35,7 @@ namespace PonovoSMS
             }
             catch (Exception e)
             {
-                Logger.Write(Config.MYSQL_USER+":"+Config.MYSQL_PASS+", "+e.ToString());
+                Logger.Write(Config.MYSQL_USER+":"+Config.MYSQL_PASS+", "+e.ToString(), "error");
 
                 connected = false;
                 conn = null;
@@ -45,7 +50,7 @@ namespace PonovoSMS
             }
             catch (Exception e)
             {
-                Logger.Write(e.ToString());
+                Logger.Write(e.ToString(), "error");
             }
         }
 
@@ -54,7 +59,7 @@ namespace PonovoSMS
             Connect();
             Sms[] Rows = new Sms[0];
 
-            if (conn!=null)
+            if (conn!=null && connected==true)
             {
                 String sql = "SELECT * FROM `sms_queue` WHERE `deleted`='0' AND `sent`=0 ORDER BY `qid` DESC LIMIT 10";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -73,13 +78,15 @@ namespace PonovoSMS
                             sms.Receiver = rs.GetString(1);
                             sms.Content = rs.GetString(2);
 
-                            Rows[i] = sms;
+                            Rows[i++] = sms;
                         }
                     }
+
+                    Logger.Write("Loaded " + Rows.Length + " rows", "debug");
                 }
                 catch (Exception e)
                 {
-                    Logger.Write(e.ToString());
+                    Logger.Write(e.ToString(), "error");
                 }
                 finally
                 {

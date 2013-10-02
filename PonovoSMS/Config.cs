@@ -20,6 +20,8 @@ namespace PonovoSMS
         public static string COM_PORT = "3";
         public static string LOOP_TIMER = "15";
 
+        public static string LOG_LEVEL = "alert";
+
         private static string _INI_FILE = "";
 
         public static void Load()
@@ -63,6 +65,11 @@ namespace PonovoSMS
                 if (reader.get("com_port") != "")
                 {
                     COM_PORT = reader.get("com_port");
+                }
+
+                if (reader.get("log_level") != "")
+                {
+                    LOG_LEVEL = reader.get("log_level");
                 }
             }
         }
