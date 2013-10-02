@@ -13,12 +13,17 @@ namespace PonovoSMS
         public PonovoSms()
         {
             InitializeComponent();
-            Core.Init();
         }
 
         private void PonovoSms_Load(object sender, EventArgs e)
         {
+            Logger.panel = textBox1;
+
+            Core.Init();
+
             tsCom.Text = Config.COM_PORT;
+
+            Sms[] Queue = Db.LoadSms();
         }
 
         private void PonovoSms_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,6 +47,16 @@ namespace PonovoSMS
                 this.Dispose();
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //  É¾³ýsim¿¨¶ÌÐÅ
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //  ä¯ÀÀ´ý·¢¶ÌÐÅ
         }
     }
 }
