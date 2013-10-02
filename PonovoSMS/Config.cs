@@ -55,6 +55,11 @@ namespace PonovoSMS
                     MYSQL_CHARSET = reader.get("mysql_charset");
                 }
 
+                if (reader.get("mysql_name") != "")
+                {
+                    MYSQL_NAME = reader.get("mysql_name");
+                }
+
                 if (reader.get("com_port") != "")
                 {
                     COM_PORT = reader.get("com_port");
