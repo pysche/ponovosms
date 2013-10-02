@@ -30,5 +30,9 @@ namespace PonovoSMS
         public static void Close()
         {
         }
+
+        public static void Send(String Receiver, String Content)
+        {
+        }
     }
 }

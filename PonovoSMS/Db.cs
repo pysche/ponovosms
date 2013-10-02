@@ -59,7 +59,7 @@ namespace PonovoSMS
             Connect();
             Sms[] Rows = new Sms[0];
 
-            if (conn!=null && connected==true)
+            if (conn != null && connected == true)
             {
                 String sql = "SELECT * FROM `sms_queue` WHERE `deleted`='0' AND `sent`=0 ORDER BY `qid` DESC LIMIT 10";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -92,7 +92,12 @@ namespace PonovoSMS
                 {
                     rs.Close();
                     Disconnect();
+                    connected = false;
                 }
+            }
+            else
+            {
+                Logger.Write("Connection Error", "error");
             }
 
             return Rows;
