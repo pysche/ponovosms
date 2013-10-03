@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>PonovoSms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SmsQueue.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SmsQueue.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -75,6 +79,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SmsQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmsQueue.Designer.cs">
+      <DependentUpon>SmsQueue.cs</DependentUpon>
     </Compile>
     <Compile Include="Sms.cs" />
   </ItemGroup>

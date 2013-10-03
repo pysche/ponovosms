@@ -13,6 +13,7 @@ namespace PonovoSMS
     public partial class PonovoSms : Form
     {
         private SmsControlClass JDSmsControl;
+        private SmsQueue SQ = null;
 
         public PonovoSms()
         {
@@ -82,11 +83,26 @@ namespace PonovoSMS
         private void button1_Click(object sender, EventArgs e)
         {
             //  删除sim卡短信
+            try
+            {
+                JDSmsControl.ClearSimMsg();
+                MessageBox.Show("Sim卡内短信以清空！");
+            }
+            catch (Exception e1)
+            {
+                Logger.Write(e1.ToString(), "error");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //  浏览待发短信
+            if (SQ == null)
+            {
+                SQ = new SmsQueue();
+            }
+
+            SQ.ShowDialog();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -104,13 +120,9 @@ namespace PonovoSMS
                     if (Queue[i].Qid != "")
                     {
                         short sReturn = JDSmsControl.SendMsg(Queue[i].Receiver, Queue[i].Content);
+                        Queue[i].SetSent();
 
-                        if (sReturn == 0)
-                        {
-                            Queue[i].SetSent();
-
-                            Logger.Write("已发送，接收人：" + Queue[i].Receiver + "，内容："+Queue[i].Content, "debug");
-                        }
+                        Logger.Write("已发送，接收人：" + Queue[i].Receiver + "，内容："+Queue[i].Content, "debug");
                     }
                 }
                 catch (Exception e)
@@ -166,7 +178,7 @@ namespace PonovoSMS
 
         void ConnectToModem()
         {
-            JDSmsControl.SyncWorkMode = true;
+            JDSmsControl.SyncWorkMode = false;
             JDSmsControl.AutoDelMsg = true;
 
             JDSmsControl.Timeouts = 15;
@@ -183,20 +195,24 @@ namespace PonovoSMS
             JDSmsControl.SendPriority = 16;
             JDSmsControl.MsgValidMinute = 1440;
 
+            Logger.Write("正在连接到短信猫设备 ...", "debug");
             short sReturn = JDSmsControl.OpenCom();
 
-            if (sReturn == 0)
+            if (JDSmsControl.SyncWorkMode == true)
             {
-                Logger.Write("成功连接到短信猫设备", "debug");
+                if (sReturn == 0)
+                {
+                    Logger.Write("成功连接到短信猫设备", "debug");
 
-                //  启动定时器，开始查询数据库
-                timer1.Enabled = true;
-            }
-            else
-            {
-                Logger.Write("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。", "alert");
-                MessageBox.Show("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。");
-                ForClose();
+                    //  启动定时器，开始查询数据库
+                    timer1.Enabled = true;
+                }
+                else
+                {
+                    Logger.Write("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。", "alert");
+                    MessageBox.Show("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。");
+                    ForClose();
+                }
             }
         }
     }

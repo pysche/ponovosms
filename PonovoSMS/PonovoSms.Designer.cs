@@ -53,7 +53,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "删除sim卡短信";
+            this.button1.Text = "清空sim卡短信";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -138,6 +138,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(278, 153);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 23);
