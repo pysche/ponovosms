@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using JinDI_SmsComLib;
+using JDSMSTest;
 
 namespace PonovoSMS
 {
@@ -140,6 +141,7 @@ namespace PonovoSMS
         void JDSmsControl_NewMessage(short sMsgType, short sSimPosition, string bstrFromNumber, string bstrContent, DateTime dtSentTime)
         {
             Logger.Write(bstrFromNumber + "À´ÐÅ£º" + bstrContent, "debug");
+            Db.Save(bstrFromNumber, bstrContent);
         }
 
         void JDSmsControl_SimCardNoMemory()

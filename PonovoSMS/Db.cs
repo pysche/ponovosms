@@ -65,6 +65,16 @@ namespace PonovoSMS
             cmd.ExecuteNonQuery();
         }
 
+        public static void Save(String Number, String Content)
+        {
+            Connect();
+
+            String Sql = "INSERT INTO `sms` (`msg_from`, `receive_time`, `content`, `deleted`) VALUES ('"+Number+"', UNIX_TIMESTAMP(), '"+Content+"', '0')";
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = Sql;
+            cmd.ExecuteNonQuery();
+        }
+
         public static Sms[] LoadSms()
         {
             Connect();
@@ -89,8 +99,6 @@ namespace PonovoSMS
 
                         Rows[i++] = sms;
                     }
-
-                    Logger.Write("Loaded " + Rows.Length + " rows", "debug");
                 }
                 catch (Exception e)
                 {
