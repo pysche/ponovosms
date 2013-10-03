@@ -115,7 +115,7 @@ namespace PonovoSMS
                 }
                 catch (Exception e)
                 {
-                    Logger.Write(e.ToString(), "error");
+                    //Logger.Write(e.ToString(), "error");
                 }
             }
         }
