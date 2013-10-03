@@ -22,6 +22,8 @@ namespace PonovoSMS
 
         public static string LOG_LEVEL = "alert";
 
+        public static string SMS_SIGN = "[±±¾©²©µç]";
+
         private static string _INI_FILE = "";
 
         public static void Load()
@@ -70,6 +72,11 @@ namespace PonovoSMS
                 if (reader.get("log_level") != "")
                 {
                     LOG_LEVEL = reader.get("log_level");
+                }
+
+                if (reader.get("sms_sign")!="")
+                {
+                    SMS_SIGN = reader.get("sms_sign");
                 }
             }
         }

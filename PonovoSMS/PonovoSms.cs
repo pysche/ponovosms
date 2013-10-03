@@ -25,7 +25,7 @@ namespace PonovoSMS
             {
                 JDSmsControl.CloseCom();
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -103,7 +103,14 @@ namespace PonovoSMS
                 {
                     if (Queue[i].Qid != "")
                     {
-                        Modem.Send(Queue[i].Receiver, Queue[i].Content);
+                        short sReturn = JDSmsControl.SendMsg(Queue[i].Receiver, Queue[i].Content);
+
+                        if (sReturn == 0)
+                        {
+                            Queue[i].SetSent();
+
+                            Logger.Write("已发送，接收人：" + Queue[i].Receiver + "，内容："+Queue[i].Content, "debug");
+                        }
                     }
                 }
                 catch (Exception e)
@@ -159,7 +166,7 @@ namespace PonovoSMS
 
         void ConnectToModem()
         {
-            JDSmsControl.SyncWorkMode = false;
+            JDSmsControl.SyncWorkMode = true;
             JDSmsControl.AutoDelMsg = true;
 
             JDSmsControl.Timeouts = 15;
@@ -167,7 +174,30 @@ namespace PonovoSMS
             JDSmsControl.Settings = 9600;
             JDSmsControl.CountryCode = "86";
 
+            JDSmsControl.isStatusReport = false;           
+            JDSmsControl.EnglishMsg = false;       
+            JDSmsControl.AutoSplite = true;
+            JDSmsControl.IsFlash = false;
+
+            JDSmsControl.SignName = Config.SMS_SIGN;
+            JDSmsControl.SendPriority = 16;
+            JDSmsControl.MsgValidMinute = 1440;
+
             short sReturn = JDSmsControl.OpenCom();
+
+            if (sReturn == 0)
+            {
+                Logger.Write("成功连接到短信猫设备", "debug");
+
+                //  启动定时器，开始查询数据库
+                timer1.Enabled = true;
+            }
+            else
+            {
+                Logger.Write("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。", "alert");
+                MessageBox.Show("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。");
+                ForClose();
+            }
         }
     }
 }

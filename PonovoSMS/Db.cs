@@ -55,6 +55,16 @@ namespace PonovoSMS
             }
         }
 
+        public static void SetSent(String Qid)
+        {
+            Connect();
+
+            String Sql = "UPDATE `sms_queue` SET `sent`='1', `send_time`=NOW() WHERE `qid`='"+Qid+"'";
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = Sql;
+            cmd.ExecuteNonQuery();
+        }
+
         public static Sms[] LoadSms()
         {
             Connect();

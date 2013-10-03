@@ -12,7 +12,7 @@ namespace PonovoSMS
 
         public void SetSent()
         {
-
+            Db.SetSent(Qid);
         }
     }
 }
