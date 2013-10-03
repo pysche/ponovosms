@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using JinDI_SmsComLib;
-using JDSMSTest;
 
 namespace PonovoSMS
 {

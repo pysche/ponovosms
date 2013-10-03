@@ -69,7 +69,7 @@ namespace PonovoSMS
         {
             Connect();
 
-            String Sql = "INSERT INTO `sms` (`msg_from`, `receive_time`, `content`, `deleted`) VALUES ('"+Number+"', UNIX_TIMESTAMP(), '"+Content+"', '0')";
+            String Sql = "INSERT INTO `sms` (`msg_from`, `receive_time`, `content`, `deleted`) VALUES ('"+Number+"', NOW(), '"+Content+"', '0')";
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = Sql;
             cmd.ExecuteNonQuery();

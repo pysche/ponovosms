@@ -92,18 +92,9 @@
     <Content Include="DBEngine.dll" />
     <Content Include="Interop.JinDI_SmsComLib.dll" />
     <Content Include="JindiSMSControl.ocx" />
-    <Content Include="MSCOMM32.OCX" />
     <Content Include="SmsCore.dll" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="JDSMSTest">
-      <Guid>{0B798E7C-5E3E-47AF-9A17-1336CBFEE05C}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
     <COMReference Include="JinDI_SmsComLib">
       <Guid>{94C65739-23F7-434B-943D-BF6715380209}</Guid>
       <VersionMajor>1</VersionMajor>
