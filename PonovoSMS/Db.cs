@@ -13,6 +13,7 @@ namespace PonovoSMS
         public static void Init()
         {
             String connStr = "Database=" + Config.MYSQL_NAME + ";Data Source=" + Config.MYSQL_HOST + ";User Id=" + Config.MYSQL_USER + ";Password=" + Config.MYSQL_PASS + ";pooling=false;CharSet=" + Config.MYSQL_CHARSET + ";port=" + Config.MYSQL_PORT;
+            Logger.Write(connStr, "debug");
             conn = new MySqlConnection(connStr);
       
             Connect();
@@ -57,11 +58,11 @@ namespace PonovoSMS
         public static Sms[] LoadSms()
         {
             Connect();
-            Sms[] Rows = new Sms[0];
+            Sms[] Rows = new Sms[10];
 
             if (conn != null && connected == true)
             {
-                String sql = "SELECT * FROM `sms_queue` WHERE `deleted`='0' AND `sent`=0 ORDER BY `qid` DESC LIMIT 10";
+                String sql = "SELECT * FROM `sms_queue` WHERE `deleted`='0' AND `sent`='0' ORDER BY `qid` DESC LIMIT 10";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rs = cmd.ExecuteReader();
                 Rows = new Sms[10];
@@ -71,15 +72,12 @@ namespace PonovoSMS
                     int i = 0;
                     while (rs.Read())
                     {
-                        if (rs.HasRows)
-                        {
-                            Sms sms = new Sms();
-                            sms.Qid = rs.GetString(0);
-                            sms.Receiver = rs.GetString(1);
-                            sms.Content = rs.GetString(2);
+                        Sms sms = new Sms();
+                        sms.Qid = rs["qid"].ToString();
+                        sms.Receiver = rs["receiver"].ToString();
+                        sms.Content = rs["content"].ToString();
 
-                            Rows[i++] = sms;
-                        }
+                        Rows[i++] = sms;
                     }
 
                     Logger.Write("Loaded " + Rows.Length + " rows", "debug");
@@ -91,6 +89,7 @@ namespace PonovoSMS
                 finally
                 {
                     rs.Close();
+                    cmd.Dispose();
                     Disconnect();
                     connected = false;
                 }

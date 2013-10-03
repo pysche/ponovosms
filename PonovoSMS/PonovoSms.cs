@@ -31,6 +31,7 @@ namespace PonovoSMS
 
             this.Dispose();
             this.Close();
+            Application.Exit();
         }
 
         private void PonovoSms_Load(object sender, EventArgs e)
@@ -150,6 +151,7 @@ namespace PonovoSMS
             }
             else
             {
+                Logger.Write("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。", "alert");
                 MessageBox.Show("打开端口失败！请确认设备是否正常连接、设备是否已经被其它应用打开、COM端口和通讯波特率是否正确。");
                 ForClose();
             }
