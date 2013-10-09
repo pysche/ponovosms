@@ -1,7 +1,36 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PonovoSMS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="mysql_host" Type="System.String" Scope="User">
+      <Value Profile="(Default)">172.16.74.1</Value>
+    </Setting>
+    <Setting Name="mysql_user" Type="System.String" Scope="User">
+      <Value Profile="(Default)">newoa</Value>
+    </Setting>
+    <Setting Name="mysql_pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">newoa321#@!</Value>
+    </Setting>
+    <Setting Name="mysql_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">newoa</Value>
+    </Setting>
+    <Setting Name="com_port" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="log_level" Type="System.String" Scope="User">
+      <Value Profile="(Default)">debug</Value>
+    </Setting>
+    <Setting Name="com_rate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9600</Value>
+    </Setting>
+    <Setting Name="mysql_charset" Type="System.String" Scope="User">
+      <Value Profile="(Default)">utf8</Value>
+    </Setting>
+    <Setting Name="sms_sign" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[北京博电]</Value>
+    </Setting>
+    <Setting Name="loop_timer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

@@ -13,7 +13,6 @@ namespace PonovoSMS
     public partial class PonovoSms : Form
     {
         private SmsControlClass JDSmsControl;
-        private SmsQueue SQ = null;
 
         public PonovoSms()
         {
@@ -86,23 +85,12 @@ namespace PonovoSMS
             try
             {
                 JDSmsControl.ClearSimMsg();
-                MessageBox.Show("Sim卡内短信以清空！");
+                MessageBox.Show("Sim卡内短信已清空！");
             }
             catch (Exception e1)
             {
                 Logger.Write(e1.ToString(), "error");
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //  浏览待发短信
-            if (SQ == null)
-            {
-                SQ = new SmsQueue();
-            }
-
-            SQ.ShowDialog();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

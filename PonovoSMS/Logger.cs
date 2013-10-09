@@ -14,12 +14,12 @@ namespace PonovoSMS
         {
             String Log = "";
             
-            Log += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Log += DateTime.Now.ToString("MM-dd HH:mm:ss");
             Log += " ";
             Log += Msg;
             Log += "\r\n";
 
-            panel.Text += Log;
+            panel.Text = Log + panel.Text;
 
             Console.WriteLine(Log);
         }
