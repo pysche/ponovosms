@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
@@ -17,28 +18,26 @@ namespace PonovoSMS
             conn = new MySqlConnection(connStr);
       
             Connect();
-
-            if (connected == true)
-            {
-                Logger.Write("Connected to MySQL", "debug");
-            }
         }
 
         public static void Connect()
         {
             try
             {
-                if (connected==false)
-                {
+                if (conn == null) {
                     conn.Open();
-                    connected = true;
+                } else if (conn.State != ConnectionState.Open) {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open) {
+                    Logger.Write("Connected to MySQL", "debug");
                 }
             }
             catch (Exception e)
             {
                 Logger.Write(Config.MYSQL_USER+":"+Config.MYSQL_PASS+", "+e.ToString(), "error");
 
-                connected = false;
                 conn = null;
             }
         }
