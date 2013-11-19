@@ -169,6 +169,7 @@ namespace PonovoSMS
 
             JDSmsControl.Timeouts = 15;
             JDSmsControl.CommPort = (short)Convert.ToInt16(Config.COM_PORT);
+            JDSmsControl.Settings = (short)Convert.ToInt16(Config.COM_RATE);
             JDSmsControl.CountryCode = "86";
 
             JDSmsControl.isStatusReport = false;           
