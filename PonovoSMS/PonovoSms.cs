@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+
 using JinDI_SmsComLib;
 
 namespace PonovoSMS
@@ -17,6 +18,8 @@ namespace PonovoSMS
         public PonovoSms()
         {
             InitializeComponent();
+
+            this.notifyIcon1.Text = Config.APP_NAME;
 
             JDSmsControl = new SmsControlClass();
             JDSmsControl.ConnectModemResult += new _ISmsControlEvents_ConnectModemResultEventHandler(JDSmsControl_ConnectModemResult);
@@ -206,6 +209,21 @@ namespace PonovoSMS
         private void timer2_Tick(object sender, EventArgs e)
         {
             Db.Connect();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.TopMost = true;
+        }
+
+        private void PonovoSms_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.notifyIcon1.Visible = true;
+            }
         }
     }
 }

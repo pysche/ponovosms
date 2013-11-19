@@ -99,6 +99,7 @@
     <Content Include="DBEngine.dll" />
     <Content Include="Interop.JinDI_SmsComLib.dll" />
     <Content Include="JindiSMSControl.ocx" />
+    <Content Include="sms.ico" />
     <Content Include="SmsCore.dll" />
   </ItemGroup>
   <ItemGroup>

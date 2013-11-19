@@ -23,6 +23,7 @@ namespace PonovoSMS
         public static string LOG_LEVEL = "alert";
 
         public static string SMS_SIGN = "[北京博电]";
+        public static string APP_NAME = "短信守护程序";
 
         public static void Load()
         {
@@ -36,6 +37,7 @@ namespace PonovoSMS
             LOG_LEVEL = Properties.Settings.Default.log_level;
             LOOP_TIMER = Properties.Settings.Default.loop_timer;
             SMS_SIGN = Properties.Settings.Default.sms_sign;
+            APP_NAME = Properties.Settings.Default.app_name;
         }
     }
 }

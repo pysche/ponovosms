@@ -25,42 +25,6 @@ namespace PonovoSMS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("172.16.74.1")]
-        public string mysql_host {
-            get {
-                return ((string)(this["mysql_host"]));
-            }
-            set {
-                this["mysql_host"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("newoa")]
-        public string mysql_user {
-            get {
-                return ((string)(this["mysql_user"]));
-            }
-            set {
-                this["mysql_user"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("newoa321#@!")]
-        public string mysql_pass {
-            get {
-                return ((string)(this["mysql_pass"]));
-            }
-            set {
-                this["mysql_pass"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("newoa")]
         public string mysql_name {
             get {
@@ -68,18 +32,6 @@ namespace PonovoSMS.Properties {
             }
             set {
                 this["mysql_name"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public string com_port {
-            get {
-                return ((string)(this["com_port"]));
-            }
-            set {
-                this["com_port"] = value;
             }
         }
         
@@ -140,6 +92,66 @@ namespace PonovoSMS.Properties {
             }
             set {
                 this["loop_timer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("172.17.110.16")]
+        public string mysql_host {
+            get {
+                return ((string)(this["mysql_host"]));
+            }
+            set {
+                this["mysql_host"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pysche")]
+        public string mysql_user {
+            get {
+                return ((string)(this["mysql_user"]));
+            }
+            set {
+                this["mysql_user"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("leipang")]
+        public string mysql_pass {
+            get {
+                return ((string)(this["mysql_pass"]));
+            }
+            set {
+                this["mysql_pass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string com_port {
+            get {
+                return ((string)(this["com_port"]));
+            }
+            set {
+                this["com_port"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("短信守护程序")]
+        public string app_name {
+            get {
+                return ((string)(this["app_name"]));
+            }
+            set {
+                this["app_name"] = value;
             }
         }
     }
