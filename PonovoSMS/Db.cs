@@ -13,20 +13,24 @@ namespace PonovoSMS
 
         public static void Init()
         {
-            String connStr = "Database=" + Config.MYSQL_NAME + ";Data Source=" + Config.MYSQL_HOST + ";User Id=" + Config.MYSQL_USER + ";Password=" + Config.MYSQL_PASS + ";pooling=false;CharSet=" + Config.MYSQL_CHARSET + ";port=" + Config.MYSQL_PORT;
-            Logger.Write(connStr, "debug");
-            conn = new MySqlConnection(connStr);
-      
             Connect();
+        }
+
+        public static bool valid()
+        {
+            return (conn != null && conn.State == ConnectionState.Open);
         }
 
         public static void Connect()
         {
             try
             {
-                if (conn == null) {
-                    conn.Open();
-                } else if (conn.State != ConnectionState.Open) {
+                if (!valid())
+                {
+                    String connStr = "Database=" + Config.MYSQL_NAME + ";Data Source=" + Config.MYSQL_HOST + ";User Id=" + Config.MYSQL_USER + ";Password=" + Config.MYSQL_PASS + ";pooling=false;CharSet=" + Config.MYSQL_CHARSET + ";port=" + Config.MYSQL_PORT;
+                    Logger.Write(connStr, "debug");
+
+                    conn = new MySqlConnection(connStr);
                     conn.Open();
                 }
 

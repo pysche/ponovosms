@@ -17,6 +17,13 @@ namespace PonovoSMS
         public PonovoSms()
         {
             InitializeComponent();
+
+            JDSmsControl = new SmsControlClass();
+            JDSmsControl.ConnectModemResult += new _ISmsControlEvents_ConnectModemResultEventHandler(JDSmsControl_ConnectModemResult);
+            JDSmsControl.NewMessage += new _ISmsControlEvents_NewMessageEventHandler(JDSmsControl_NewMessage);
+            JDSmsControl.SentMsgStatus += new _ISmsControlEvents_SentMsgStatusEventHandler(JDSmsControl_SentMsgStatus);
+            JDSmsControl.SimCardNoMemory += new _ISmsControlEvents_SimCardNoMemoryEventHandler(JDSmsControl_SimCardNoMemory);
+            JDSmsControl.SimCardNoMoney += new _ISmsControlEvents_SimCardNoMoneyEventHandler(JDSmsControl_SimCardNoMoney);
         }
 
         private void ForClose()
@@ -37,22 +44,10 @@ namespace PonovoSMS
         private void PonovoSms_Load(object sender, EventArgs e)
         {
             Logger.panel = textBox1;
-
             Core.Init();
-
             tsCom.Text = Config.COM_PORT;
 
-            if (Db.connected == true)
-            {
-                JDSmsControl = new SmsControlClass();
-                JDSmsControl.ConnectModemResult += new _ISmsControlEvents_ConnectModemResultEventHandler(JDSmsControl_ConnectModemResult);
-                JDSmsControl.NewMessage += new _ISmsControlEvents_NewMessageEventHandler(JDSmsControl_NewMessage);
-                JDSmsControl.SentMsgStatus += new _ISmsControlEvents_SentMsgStatusEventHandler(JDSmsControl_SentMsgStatus);
-                JDSmsControl.SimCardNoMemory += new _ISmsControlEvents_SimCardNoMemoryEventHandler(JDSmsControl_SimCardNoMemory);
-                JDSmsControl.SimCardNoMoney += new _ISmsControlEvents_SimCardNoMoneyEventHandler(JDSmsControl_SimCardNoMoney);
-
-                ConnectToModem();
-            }
+            ConnectToModem();
         }
 
         private void PonovoSms_FormClosing(object sender, FormClosingEventArgs e)
@@ -115,7 +110,7 @@ namespace PonovoSMS
                 }
                 catch (Exception e)
                 {
-                    //Logger.Write(e.ToString(), "error");
+                    Logger.Write(e.ToString(), "error");
                 }
             }
         }
@@ -167,12 +162,13 @@ namespace PonovoSMS
 
         void ConnectToModem()
         {
+            Logger.Write("正在连接到短信猫设备 ...", "debug");
+
             JDSmsControl.SyncWorkMode = false;
             JDSmsControl.AutoDelMsg = true;
 
             JDSmsControl.Timeouts = 15;
             JDSmsControl.CommPort = (short)Convert.ToInt16(Config.COM_PORT);
-            JDSmsControl.Settings = 9600;
             JDSmsControl.CountryCode = "86";
 
             JDSmsControl.isStatusReport = false;           
@@ -184,7 +180,6 @@ namespace PonovoSMS
             JDSmsControl.SendPriority = 16;
             JDSmsControl.MsgValidMinute = 1440;
 
-            Logger.Write("正在连接到短信猫设备 ...", "debug");
             short sReturn = JDSmsControl.OpenCom();
 
             if (JDSmsControl.SyncWorkMode == true)

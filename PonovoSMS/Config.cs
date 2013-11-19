@@ -18,6 +18,7 @@ namespace PonovoSMS
         public static string MYSQL_CHARSET = "utf8";
 
         public static string COM_PORT = "3";
+        public static string COM_RATE = "9600";
         public static string LOOP_TIMER = "15";
 
         public static string LOG_LEVEL = "alert";
@@ -32,6 +33,7 @@ namespace PonovoSMS
             MYSQL_PASS = Properties.Settings.Default.mysql_pass;
             MYSQL_CHARSET = Properties.Settings.Default.mysql_charset;
 
+            COM_RATE = Properties.Settings.Default.com_rate;
             COM_PORT = Properties.Settings.Default.com_port;
             LOG_LEVEL = Properties.Settings.Default.log_level;
             LOOP_TIMER = Properties.Settings.Default.loop_timer;
