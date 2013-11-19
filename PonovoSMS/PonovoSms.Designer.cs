@@ -42,6 +42,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this.tsReceived,
             this.toolStripStatusLabel3,
             this.tsCom});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 182);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 179);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(582, 22);
             this.statusStrip1.SizingGrip = false;
@@ -147,24 +148,29 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 300000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // PonovoSms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 204);
+            this.ClientSize = new System.Drawing.Size(582, 201);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(590, 231);
-            this.MinimumSize = new System.Drawing.Size(590, 231);
+            this.MaximumSize = new System.Drawing.Size(590, 235);
+            this.MinimumSize = new System.Drawing.Size(590, 235);
             this.Name = "PonovoSms";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "短信守护程序 v1.0 Build20131009";
+            this.Text = "短信守护程序 v1.0 Build20131119";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PonovoSms_FormClosing);
             this.Load += new System.EventHandler(this.PonovoSms_Load);
             this.statusStrip1.ResumeLayout(false);
@@ -190,6 +196,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsCom;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

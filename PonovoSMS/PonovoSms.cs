@@ -17,6 +17,13 @@ namespace PonovoSMS
         public PonovoSms()
         {
             InitializeComponent();
+
+            JDSmsControl = new SmsControlClass();
+            JDSmsControl.ConnectModemResult += new _ISmsControlEvents_ConnectModemResultEventHandler(JDSmsControl_ConnectModemResult);
+            JDSmsControl.NewMessage += new _ISmsControlEvents_NewMessageEventHandler(JDSmsControl_NewMessage);
+            JDSmsControl.SentMsgStatus += new _ISmsControlEvents_SentMsgStatusEventHandler(JDSmsControl_SentMsgStatus);
+            JDSmsControl.SimCardNoMemory += new _ISmsControlEvents_SimCardNoMemoryEventHandler(JDSmsControl_SimCardNoMemory);
+            JDSmsControl.SimCardNoMoney += new _ISmsControlEvents_SimCardNoMoneyEventHandler(JDSmsControl_SimCardNoMoney);
         }
 
         private void ForClose()
@@ -42,17 +49,7 @@ namespace PonovoSMS
 
             tsCom.Text = Config.COM_PORT;
 
-            if (Db.connected == true)
-            {
-                JDSmsControl = new SmsControlClass();
-                JDSmsControl.ConnectModemResult += new _ISmsControlEvents_ConnectModemResultEventHandler(JDSmsControl_ConnectModemResult);
-                JDSmsControl.NewMessage += new _ISmsControlEvents_NewMessageEventHandler(JDSmsControl_NewMessage);
-                JDSmsControl.SentMsgStatus += new _ISmsControlEvents_SentMsgStatusEventHandler(JDSmsControl_SentMsgStatus);
-                JDSmsControl.SimCardNoMemory += new _ISmsControlEvents_SimCardNoMemoryEventHandler(JDSmsControl_SimCardNoMemory);
-                JDSmsControl.SimCardNoMoney += new _ISmsControlEvents_SimCardNoMoneyEventHandler(JDSmsControl_SimCardNoMoney);
-
-                ConnectToModem();
-            }
+            ConnectToModem();
         }
 
         private void PonovoSms_FormClosing(object sender, FormClosingEventArgs e)
@@ -105,7 +102,7 @@ namespace PonovoSMS
             {
                 try
                 {
-                    if (Queue[i].Qid != "")
+                    if (Queue[i] != null && Queue[i].Qid != "")
                     {
                         short sReturn = JDSmsControl.SendMsg(Queue[i].Receiver, Queue[i].Content);
                         Queue[i].SetSent();
@@ -115,7 +112,7 @@ namespace PonovoSMS
                 }
                 catch (Exception e)
                 {
-                    //Logger.Write(e.ToString(), "error");
+                    Logger.Write(e.ToString(), "error");
                 }
             }
         }
@@ -195,6 +192,7 @@ namespace PonovoSMS
 
                     //  启动定时器，开始查询数据库
                     timer1.Enabled = true;
+                    timer2.Enabled = true;
                 }
                 else
                 {
@@ -203,6 +201,11 @@ namespace PonovoSMS
                     ForClose();
                 }
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Db.Connect();
         }
     }
 }
